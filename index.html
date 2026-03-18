@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LayroxcUGC | Premium Roblox UGC Tasarım</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff00ff;
+            --accent: #7b2cbf;
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(123, 44, 191, 0.1) 0%, transparent 50%);
+            animation: bgPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent);
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.9); }
+            75% { transform: translate(20px, 20px) scale(1.05); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 5% 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+            to { box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: #fff;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px 30px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .package-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .package-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        .price-note {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            margin-bottom: 25px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .order-btn {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .order-btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 5%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, var(--dark), transparent);
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        /* Order Section */
+        .order-section {
+            padding: 100px 5%;
+        }
+
+        .order-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px;
+            backdrop-filter: blur(20px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--glass-border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Tracking Section */
+        .tracking {
+            padding: 100px 5%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .tracking-box {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tracking-input-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tracking-input {
+            flex: 1;
+            padding: 18px 25px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .tracking-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .track-btn {
+            padding: 18px 35px;
+            background: var(--primary);
+            border: none;
+            border-radius: 15px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .track-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* Status Display */
+        .status-display {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--glass);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            display: none;
+        }
+
+        .status-display.active {
+            display: block;
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .status-badge {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .status-processing { background: #ffa500; color: #000; }
+        .status-completed { background: #00ff88; color: #000; }
+        .status-pending { background: #ff4757; color: #fff; }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: width 1s;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 5%;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+            padding: 0 30px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 25px;
+        }
+
+        .faq-answer p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 5% 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 15, 0.95);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .tracking-input-group {
+                flex-direction: column;
+            }
+
+            .order-container {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-animation"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">LayroxcUGC</div>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Ana Sayfa</a></li>
+            <li><a href="#services">Paketler</a></li>
+            <li><a href="#portfolio">Portföy</a></li>
+            <li><a href="#order">Sipariş</a></li>
+            <li><a href="#tracking">Takip</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">✨ Premium Roblox UGC Tasarım</div>
+            <h1>Avatarınıza<br>Benzersiz Bir Dokunuş</h1>
+            <p>Özel tasarım şapkalar, saçlar, aksesuarlar ve daha fazlası. Roblox avatarınızı bir üst seviyeye taşıyın. Profesyonel 3D modelleme, hızlı teslimat, uygun fiyatlar.</p>
+            <div class="hero-buttons">
+                <a href="#order" class="btn btn-primary">Sipariş Ver</a>
+                <a href="#portfolio" class="btn btn-secondary">Çalışmalarımı Gör</a>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Tamamlanan Proje</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Mutlu Müşteri</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24h</span>
+                    <span class="stat-label">Ortalama Teslimat</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title fade-in">
+            <h2>Fiyatlandırma Paketleri</h2>
+            <p>İhtiyacınıza uygun paketi seçin, özel tasarımınızı oluşturalım</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card fade-in">
+                <h3 class="package-name">Başlangıç</h3>
+                <p class="package-desc">Basit aksesuarlar ve şapkalar</p>
+                <div class="price">500<span>Robux</span></div>
+                <p class="price-note">veya 50₺ (TR ödemeleri için)</p>
+                <ul class="features">
+                    <li>Basit geometrik şekiller</li>
+                    <li>Tek renk veya basit texture</li>
+                    <li>1 revizyon hakkı</li>
+                    <li>24-48 saat teslimat</li>
+                    <li>Roblox grup teslimatı</li>
+                </ul>
+                <button class="order-btn" onclick="selectPackage('baslangic')">Paket Seç</button>
+            </div>
+
+            <div class="pricing-card featured fade-in">
+                <span class="featured-badge">POPÜLER</span>
+                <h3 class="package-name">Profesyonel</h3>
+                <p class="package-desc">Detaylı saçlar, karmaşık aksesuarlar</p>
+                <div class="price">1.500<span>Robux</span></div>
+                <p class="price-note">veya 150₺ (TR ödemeleri için)</p>
+                <ul class="features">
+                    <li>Karmaşık 3D modeller</li>
+                    <li>Özel texture ve materyaller</li>
+                    <li>3 revizyon hakkı</li>
+                    <li>12-24 saat teslimat</li>
+                    <li>Roblox grup teslimatı</li>
+                    <li>Özel konsept çizimi</li>
+                </ul>
+                <button class="order-btn" onclick="selectPackage('profesyonel')">Paket Seç</button>
+            </div>
+
+            <div class="pricing-card fade-in">
+                <h3 class="package-name">Premium</h3>
+                <p class="package-desc">Full set, kıyafet, özel koleksiyon</p>
+                <div class="price">5.000<span>Robux</span></div>
+                <p class="price-note">veya 500₺ (TR ödemeleri için)</p>
+                <ul class="features">
+                    <li>Full avatar seti (5+ parça)</li>
+                    <li>HD texture ve PBR materyaller</li>
+                    <li>Sınırsız revizyon</li>
+                    <li>Öncelikli teslimat (6-12 saat)</li>
+                    <li>Roblox grup teslimatı</li>
+                    <li>Konseptten teslimata full hizmet</li>
+                    <li>Özel animasyonlu aksesuar</li>
+                </ul>
+                <button class="order-btn" onclick="selectPackage('premium')">Paket Seç</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-title fade-in">
+            <h2>Son Çalışmalar</h2>
+            <p>Müşterilerim için tasarladığım bazı özel UGC'ler</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-img">🎩</div>
+                <div class="portfolio-info">
+                    <h3>Cyber Fedora</h3>
+                    <p>Neon detaylı, sci-fi temalı şapka</p>
+                    <span class="portfolio-tag">Şapka</span>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-img">💇</div>
+                <div class="portfolio-info">
+                    <h3>Galaxy Hair</h3>
+                    <p>Yıldızlı, animasyonlu saç modeli</p>
+                    <span class="portfolio-tag">Saç</span>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-img">🎭</div>
+                <div class="portfolio-info">
+                    <h3>Dragon Mask</h3>
+                    <p>Ejderha temalı dinamik yüz aksesuarı</p>
+                    <span class="portfolio-tag">Yüz</span>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-img">⚔️</div>
+                <div class="portfolio-info">
+                    <h3>Energy Sword</h3>
+                    <p>Işık efektli, animasyonlu kılıç</p>
+                    <span class="portfolio-tag">Aksesuar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="order-section" id="order">
+        <div class="section-title fade-in">
+            <h2>Sipariş Formu</h2>
+            <p>Hayalinizdeki UGC'yi tarif edin, biz yapalım</p>
+        </div>
+        <div class="order-container fade-in">
+            <form id="orderForm">
+                <div class="form-group">
+                    <label>Roblox Kullanıcı Adınız</label>
+                    <input type="text" placeholder="@kullaniciadi" required>
+                </div>
+                <div class="form-group">
+                    <label>Paket Seçimi</label>
+                    <select id="packageSelect" required>
+                        <option value="">Paket seçin...</option>
+                        <option value="baslangic">Başlangıç (500 Robux)</option>
+                        <option value="profesyonel">Profesyonel (1.500 Robux)</option>
+                        <option value="premium">Premium (5.000 Robux)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>UGC Kategorisi</label>
+                    <select required>
+                        <option value="">Kategori seçin...</option>
+                        <option value="sapka">Şapka / Başlık</option>
+                        <option value="sac">Saç / Saç aksesuarı</option>
+                        <option value="yuz">Yüz / Maske</option>
+                        <option value="sirt">Sırt / Kanat</option>
+                        <option value="el">El / Kılıç / Tutulan</option>
+                        <option value="kiyafet">Kıyafet / Set</option>
+                        <option value="diger">Diğer (açıklamada belirt)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Detaylı Açıklama</label>
+                    <textarea placeholder="Ne istediğinizi detaylı anlatın. Renkler, stil, tema, referanslar... Ne kadar detay verirseniz o kadar iyi sonuç alırsınız." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Referans Görsel (isteğe bağlı)</label>
+                    <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                        <p>📁 Görsel yüklemek için tıklayın veya sürükleyin</p>
+                        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">PNG, JPG, JPEG (max 5MB)</p>
+                    </div>
+                    <input type="file" id="fileInput" hidden accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label>Discord Kullanıcı Adınız (iletişim için)</label>
+                    <input type="text" placeholder="kullanici#1234" required>
+                </div>
+                <button type="submit" class="submit-btn">Sipariş Oluştur</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section class="tracking" id="tracking">
+        <div class="section-title fade-in">
+            <h2>Sipariş Takibi</h2>
+            <p>Sipariş numaranızı girerek durumunu kontrol edin</p>
+        </div>
+        <div class="tracking-box fade-in">
+            <div class="tracking-input-group">
+                <input type="text" class="tracking-input" id="trackingInput" placeholder="Sipariş numaranız (örn: LXC-2024-001)">
+                <button class="track-btn" onclick="trackOrder()">Sorgula</button>
+            </div>
+            <div class="status-display" id="statusDisplay">
+                <div class="status-header">
+                    <div>
+                        <h3>Sipariş #<span id="orderNum"></span></h3>
+                        <p style="color: rgba(255,255,255,0.6); margin-top: 5px;">Cyber Fedora - Profesyonel Paket</p>
+                    </div>
+                    <span class="status-badge status-processing" id="statusBadge">Yapım Aşamasında</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 60%"></div>
+                </div>
+                <p style="color: rgba(255,255,255,0.8); text-align: left;">
+                    <strong>Son Güncelleme:</strong> Modelleme aşaması tamamlandı, texture uygulanıyor...<br>
+                    <strong>Tahmini Teslimat:</strong> 6 saat içinde
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="section-title fade-in">
+            <h2>Sıkça Sorulan Sorular</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item fade-in">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Ödeme nasıl yapılıyor?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ödemeler Robux olarak Roblox grubumuz üzerinden veya Türkiye içi banka transferi/ Papara ile yapılabilir. Sipariş onayından sonra ödeme bilgileri Discord üzerinden paylaşılır.</p>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Tasarımı beğenmezsem ne olur?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Paketinize göre belirli sayıda revizyon (düzeltme) hakkınız var. Revizyon hakkınızı kullanarak değişiklik isteyebilirsiniz. Revizyon hakkı dışında köklü değişiklikler yeni bir sipariş olarak değerlendirilir.</p>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>UGC'yi Roblox'a nasıl yükleyeceğim?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>UGC'ler Roblox'un resmi UGC programı üzerinden yüklenir. Eğer UGC programına erişiminiz yoksa, tasarımı bir grup mağazası üzerinden satabilir veya kişisel kullanım için avatarınıza ekleyebilirsiniz. Detaylı yardım için Discord'dan destek alabilirsiniz.</p>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Teslimat süresi ne kadar?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Başlangıç paketi 24-48 saat, Profesyonel paket 12-24 saat, Premium paket ise 6-12 saat içinde teslim edilir. Yoğunluk durumuna göre değişiklik gösterebilir, sürekli iletişim halinde oluruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>LayroxcUGC</h3>
+                <p>Premium Roblox UGC tasarım hizmetleri. Avatarınıza özel, benzersiz dokunuşlar.</p>
+                <div class="social-links">
+                    <a href="#">📱</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📸</a>
+                    <a href="#">💬</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Linkler</h3>
+                <p><a href="#services">Paketler</a></p>
+                <p><a href="#portfolio">Portföy</a></p>
+                <p><a href="#order">Sipariş Ver</a></p>
+                <p><a href="#tracking">Sipariş Takibi</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p>Discord: Layroxc#1234</p>
+                <p>Roblox: @Layroxc</p>
+                <p>Email: siparis@layroxcugc.com</p>
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.6;">Çalışma saatleri: 10:00 - 02:00 (TSI)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LayroxcUGC. Tüm hakları saklıdır. Roblox ve ilgili logolar Roblox Corporation'a aittir.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Package Selection
+        function selectPackage(packageName) {
+            document.getElementById('packageSelect').value = packageName;
+            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // Order Tracking Simulation
+        function trackOrder() {
+            const input = document.getElementById('trackingInput').value;
+            const display = document.getElementById('statusDisplay');
+            
+            if (input.trim() === '') {
+                alert('Lütfen bir sipariş numarası girin');
+                return;
+            }
+            
+            // Simulate tracking
+            document.getElementById('orderNum').textContent = input;
+            display.classList.add('active');
+            
+            // Random status for demo
+            const statuses = [
+                { text: 'Beklemede', class: 'status-pending', width: '10%' },
+                { text: 'Yapım Aşamasında', class: 'status-processing', width: '60%' },
+                { text: 'Tamamlandı', class: 'status-completed', width: '100%' }
+            ];
+            
+            const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+            const badge = document.getElementById('statusBadge');
+            
+            badge.textContent = randomStatus.text;
+            badge.className = 'status-badge ' + randomStatus.class;
+            document.getElementById('progressFill').style.width = randomStatus.width;
+        }
+
+        // Form Submission
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Generate random order number
+            const orderNum = 'LXC-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            
+            alert('Siparişiniz alındı! Sipariş numaranız: ' + orderNum + '\n\nDiscord üzerinden sizinle iletişime geçeceğiz. Sipariş durumunuzu "Sipariş Takibi" bölümünden kontrol edebilirsiniz.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
